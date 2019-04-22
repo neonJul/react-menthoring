@@ -1,0 +1,47 @@
+.selected-movie {    
+    /* background-image: url('../../../static/img/headerBackground.jpg'); */
+    /* background-position: center; */
+    background-color: black;
+    padding: 30px 100px;  
+    color: white;   
+}
+
+.selected-movie-search {
+    background-color: white;
+    color: rgb(177, 13, 95);
+    float: right;
+    padding: 5px 10px; 
+}
+
+.movie-description {
+    display: flex;
+    margin-top: 50px;
+}
+
+.movie-description-text {
+    margin-left: 40px;
+}
+
+.part1 {
+    display: flex;
+    align-items: center;
+}
+
+h3 {
+    color: rgb(177, 13, 95);
+}
+
+.part1 span {
+    margin-left: 10px;
+    border: 1px solid white;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+.part2 {
+    margin-bottom: 25px;
+}
+
+.part2 span {
+    margin-right: 10px;
+}

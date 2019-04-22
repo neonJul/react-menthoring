@@ -1,0 +1,37 @@
+.info-panel {
+    background-color: lightgray;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between; 
+}
+
+.movie-list{
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-item {
+    width: 30%;
+    margin: 10px;
+}
+
+.movie-item img {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.movie-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movie-name {
+    font-weight: bold;
+    text-transform: uppercase; 
+}
+
+.movie-year {
+    border: 1px solid lightgray;
+    padding: 0 10px;
+}
