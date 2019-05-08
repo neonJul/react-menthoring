@@ -4,12 +4,12 @@ class MovieItem extends React.Component {
     render() {
         return (
             <div className="movie-item">
-                <img src={require('./panda.jpg')}/>
+                <img src={this.props.img}/>
                 <div className="movie-info">
-                    <p className="movie-name">Movie Name</p>
-                    <span className="movie-year">year</span>
+                    <p className="movie-name">{this.props.name}</p>
+                    <span className="movie-year">{this.props.year}</span>
                 </div>
-                <span>genre</span>
+                <span>{this.props.genre}</span>
             </div>
         );
     }

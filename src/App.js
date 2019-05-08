@@ -1,15 +1,15 @@
 import React from 'react';
-import Header from './js/components/Header';
-import MovieList from './js/components/MovieList';
+import Header from './components/Header';
+import MovieList from './components/MovieList';
 import './index.css';
-import SelectedMovie from './js/components/SelectedMovie';
+import SelectedMovie from './components/SelectedMovie';
 
 class App extends React.Component {
     render() {
         return (
             <React.Fragment>
                 {
-                    false
+                    true
                     ? <Header/>
                     : <SelectedMovie/>
                 }

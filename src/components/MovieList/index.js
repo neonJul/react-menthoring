@@ -2,6 +2,7 @@ import React from 'react';
 import './index.css';
 import Button from '../Shared/Button';
 import MovieItem from './MovieItem';
+import panda from '../../static/img/panda.jpg';
 
 class MovieList extends React.Component {
     constructor(props) {
@@ -50,13 +51,11 @@ class MovieList extends React.Component {
                     </div>
                 </div>
                 <div className="movie-list">
-                    <MovieItem/>
-                    <MovieItem/>
-                    <MovieItem/>
-                    <MovieItem/>
-                    <MovieItem/>
-                    <MovieItem/>
-                    <MovieItem/>
+                    <MovieItem name="Movie Name" img={panda} year="1996" genre="drama"/>
+                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
+                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
+                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
+                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
                 </div>
             </React.Fragment>
         )

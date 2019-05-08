@@ -1,5 +1,5 @@
 .header {
-    background-image: url('../../../static/img/headerBackground.jpg');
+    background-image: url('../../static/img/headerBackground.jpg');
     background-position: center;
     display: flex;
     flex-direction: column;

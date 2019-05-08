@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import Button from '../Shared/Button';
+import img from '../../static/img/panda.jpg';
 
 class SelectedMovie extends React.Component {
     render() {
@@ -8,7 +9,7 @@ class SelectedMovie extends React.Component {
             <div className="selected-movie">
                 <Button name="Search" className="selected-movie-search"/>
                 <div className="movie-description">
-                    <img src={require('../MovieList/MovieItem/panda.jpg')}/>
+                    <img src={img}/>
                     <div className="movie-description-text">
                         <div className="part1">
                             <h3>Movie Name</h3>
