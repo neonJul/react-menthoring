@@ -6,6 +6,7 @@ module.exports = {
     entry: './index.js',
 
     output: {
+        publicPath: '/',
         filename: 'bundle.js',
         path: path.join(__dirname, 'dist'),
     },
@@ -54,5 +55,9 @@ module.exports = {
         })
     ],
 
-    watch: false
+    watch: false,
+
+    devServer: {
+        historyApiFallback: true,
+    }
 };

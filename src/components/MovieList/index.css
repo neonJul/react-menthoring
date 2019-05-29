@@ -32,6 +32,7 @@
 }
 
 .movie-year {
+    align-self: flex-start;
     border: 1px solid lightgray;
     padding: 0 10px;
 }

@@ -1,0 +1,1 @@
+export const Endpoint = 'https://reactjs-cdp.herokuapp.com';

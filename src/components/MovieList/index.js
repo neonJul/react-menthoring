@@ -2,7 +2,8 @@ import React from 'react';
 import './index.css';
 import Button from '../Shared/Button';
 import MovieItem from './MovieItem';
-import panda from '../../static/img/panda.jpg';
+import { sortBy } from '../../actions';
+import {connect} from "react-redux";
 
 class MovieList extends React.Component {
     constructor(props) {
@@ -20,6 +21,7 @@ class MovieList extends React.Component {
                 sortByRating: !prevState.sortByRating
             }
         });
+        this.props.sortBy('release_date');
     }
 
     sortByRating = () => {
@@ -29,13 +31,14 @@ class MovieList extends React.Component {
                 sortByRating: !prevState.sortByRating
             }
         });
+        this.props.sortBy('vote_average');
     }
 
     render() {
         return (
             <React.Fragment>
                 <div className="info-panel">
-                    <span>xxx movies found</span>
+                    <span>{this.props.movies.total} movies found</span>
                     <div className="sort-films">
                         <span>sort by</span>
                         <Button 
@@ -50,16 +53,35 @@ class MovieList extends React.Component {
                         />
                     </div>
                 </div>
-                <div className="movie-list">
-                    <MovieItem name="Movie Name" img={panda} year="1996" genre="drama"/>
-                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
-                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
-                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
-                    <MovieItem name="Movie Name" img={panda} year="1996" genre="genre"/>
-                </div>
+                {
+                    ( this.props.movies.data && this.props.movies.data.length )
+                        ? (
+                            <div className="movie-list">
+                                {
+                                    this.props.movies.data.map((movie) =>
+                                        <MovieItem key={movie.id} id={movie.id} name={movie.title} img={movie.poster_path} year={movie.release_date} genre={movie.genres}/>
+                                    )
+                                }
+                            </div>
+                        )
+                        : <div className="empty-page">No films found</div>
+                }
             </React.Fragment>
         )
     }
 };
 
-export default MovieList;
+const mapStateToProps = (state) => {
+    return {
+        movies: state.movies
+    }
+}
+
+const mapDispatchToProps = {
+    sortBy,
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MovieList);

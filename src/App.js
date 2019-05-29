@@ -1,24 +1,23 @@
 import React from 'react';
 import Header from './components/Header';
-import MovieList from './components/MovieList';
 import './index.css';
 import SelectedMovie from './components/SelectedMovie';
+import NoMatch from './components/Shared/NoMatch';
+
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 class App extends React.Component {
-    render() {
+    render() {        
         return (
-            <React.Fragment>
-                {
-                    true
-                    ? <Header/>
-                    : <SelectedMovie/>
-                }
-                {
-                    false
-                    ? <div className="empty-page">No films found</div>
-                    : <MovieList/>
-                }
-            </React.Fragment>
+            <Router>
+                <Switch>
+                    <Route path="/" exact component={ Header } />
+                    <Route path="/search" exact component={ Header } />
+                    <Route path="/film/:id" exact component={ SelectedMovie } />
+                    <Route component={NoMatch}/>
+                </Switch>
+            </Router>
         )
     }
 };

@@ -1,6 +1,4 @@
 .selected-movie {    
-    /* background-image: url('../../../static/img/headerBackground.jpg'); */
-    /* background-position: center; */
     background-color: black;
     padding: 30px 100px;  
     color: white;   
@@ -16,6 +14,11 @@
 .movie-description {
     display: flex;
     margin-top: 50px;
+    align-items: flex-start;
+}
+
+.movie-description > img {
+    max-width: 300px;
 }
 
 .movie-description-text {

@@ -1,38 +1,65 @@
 import React from 'react';
 import './index.css';
 import Button from '../Shared/Button';
-import img from '../../static/img/panda.jpg';
+import { connect } from 'react-redux';
+import {fetchMovieAsync, fetchMoviesAsync} from '../../actions/index';
+import { NavLink } from 'react-router-dom';
+import MovieList from "../MovieList";
 
 class SelectedMovie extends React.Component {
+
+    componentDidMount() {
+        this.props.fetchMovieAsync(this.props.match.params.id);
+    }
+
+    componentDidUpdate(oldProps) {
+        if (this.props.match.params.id !== oldProps.match.params.id) {
+            this.props.fetchMovieAsync(this.props.match.params.id);
+        }
+    }
+
     render() {
         return(
-            <div className="selected-movie">
-                <Button name="Search" className="selected-movie-search"/>
-                <div className="movie-description">
-                    <img src={img}/>
-                    <div className="movie-description-text">
-                        <div className="part1">
-                            <h3>Movie Name</h3>
-                            <span>4.3</span>
+            <>
+                <div className="selected-movie">
+                    <NavLink className="movie-item" to="/">
+                        <Button name="Search" className="selected-movie-search"/>
+                    </NavLink>
+
+                    <div className="movie-description">
+                        <img src={this.props.movie.poster_path}/>
+                        <div className="movie-description-text">
+                            <div className="part1">
+                                <h3>{this.props.movie.title}</h3>
+                                <span>{this.props.movie.vote_average}</span>
+                            </div>
+                            <div className="part2">
+                                <span>{this.props.movie.release_date}</span>
+                            </div>
+                            <p>{this.props.movie.overview}</p>
                         </div>
-                        <div className="part2">
-                            <span>year</span>
-                            <span>duration</span>
-                        </div>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                            It has survived not only five centuries, but also the leap into electronic typesetting, remaining 
-                            essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets 
-                            containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                             PageMaker including versions of Lorem Ipsum.
-                        </p>
                     </div>
                 </div>
-            </div>
+                <MovieList/>
+            </>
         );
     }
 }
 
-export default SelectedMovie;
+const mapStateToProps = state => {
+    return {
+        movie: state.movie,
+        movies: state.movies,
+        searchParams: state.searchParams
+    };
+  };
+
+const mapDispatchToProps = {
+    fetchMovieAsync,
+    fetchMoviesAsync
+  };
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(SelectedMovie);
